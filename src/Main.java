@@ -1,5 +1,3 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 import java.util.Random;
 import java.util.Scanner;
 
@@ -10,47 +8,39 @@ public class Main {
         Random random = new Random();
         int nombreSecret = random.nextInt(100) + 1;
 
-        // Créer le scanner pour lire l'entrée de l'utilisateur
+        // Scanner pour lire l'entrée de l'utilisateur
         Scanner scanner = new Scanner(System.in);
 
-        int essaisMax = 10;
         int essais = 0;
-        boolean gagne = false;
 
-        System.out.println("___ Jeu du nombre à deviner ___");
         System.out.println("Devinez un nombre entre 1 et 100.");
-        System.out.println("Vous avez 10 essais pour le trouver !");
+        System.out.println("Vous avez 10 essais !");
 
-        // Boucle principale du jeu
-        while (essais < essaisMax) {
+        // Boucle qui demande à l'utilisateur de deviner
+        while (essais < 10) {
 
             essais++;
-            System.out.println("\nEssai " + essais + "/" + essaisMax);
             System.out.print("Entrez votre nombre : ");
 
-            // Lire le nombre entré par l'utilisateur
+            // Lire l'entrée et comparer au nombre aléatoire
             int proposition = scanner.nextInt();
 
-            // Comparer la proposition au nombre secret
             if (proposition == nombreSecret) {
-                // L'utilisateur a trouvé le bon nombre
-                gagne = true;
-                break;
+                // Bon nombre → fin de boucle → gagné
+                System.out.println("Félicitations ! Vous avez gagné !");
+                scanner.close();
+                return;
             } else if (proposition < nombreSecret) {
-                System.out.println("Trop petit ! ");
+                // Indiquer si inférieur
+                System.out.println("Trop petit !");
             } else {
-                System.out.println("Trop grand ! ");
+                // Indiquer si supérieur
+                System.out.println("Trop grand !");
             }
         }
 
-        // Affichage du résultat final
-        if (gagne) {
-            System.out.println("\n Félicitations Vous avez gagné! Nombre trouvé :  " + nombreSecret + " en " + essais + " essai(s) !");
-        } else {
-            System.out.println("\n Perdu ! Le nombre secret était : " + nombreSecret);
-        }
-
-        // Fermer le scanner
+        // 10 essais utilisés → fin de boucle → perdu
+        System.out.println("Perdu ! Le nombre secret était : " + nombreSecret);
         scanner.close();
     }
 }
