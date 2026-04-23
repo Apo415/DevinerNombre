@@ -37,9 +37,9 @@ public class Main {
                 gagne = true;
                 break;
             } else if (proposition < nombreSecret) {
-                System.out.println("Trop petit ! Le nombre est plus grand.");
+                System.out.println("Trop petit ! ");
             } else {
-                System.out.println("Trop grand ! Le nombre est plus petit.");
+                System.out.println("Trop grand ! ");
             }
         }
 
